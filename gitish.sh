@@ -113,6 +113,27 @@ gitish::add_n() {
 }
 
 #######################################
+# Add the file(s) to the index identified
+# by the number from status_n() and commit.
+#
+# Globals:
+#     None
+# Arguments:
+#     File number(s) to unstage from status_n()
+# Returns:
+#     None
+#######################################
+gitish::commit_n() {
+    if [ "$#" == "0" ]
+        then
+            echo 'gitish::commit_n: Please pass the file path number(s)'
+            return
+    fi
+
+    gitish::add_n $arg && git commit
+}
+
+#######################################
 # Remove the file(s) from the index
 # identified by the number from status_n().
 #
