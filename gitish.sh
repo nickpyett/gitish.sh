@@ -26,6 +26,8 @@ gitishTextWeightNormal="$(tput sgr0)"
 #     None
 #######################################
 gitish::status_n() {
+    echo -e "## ${gitishTextGreen}$(gitish::branch_name)${gitishTextNormal}"
+
     IFS=$'\r\n' GLOBIGNORE='*' command eval 'gitStatusFiles=($(git status -s))'
 
     if [ "${gitStatusFiles}" = "" ]
