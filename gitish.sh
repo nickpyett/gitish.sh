@@ -132,7 +132,7 @@ gitish::commit_n() {
             return
     fi
 
-    gitish::add_n $arg && git commit
+    gitish::add_n "$@" && git commit
 }
 
 #######################################
