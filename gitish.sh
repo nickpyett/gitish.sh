@@ -201,3 +201,43 @@ gitish::add_a() {
 gitish::branch_new() {
     git checkout -b $1
 }
+
+#######################################
+# Checkout a new feature branch.
+#
+# Globals:
+#     None
+# Arguments:
+#     New feature branch name
+# Returns:
+#     None
+#######################################
+gitish::branch_new_feature() {
+    if [ "$1" = "" ]
+        then
+            echo "gitish::branch_new_feature: Please provide a feature branch name"
+            return
+    fi
+
+    git checkout -b feature/$1
+}
+
+#######################################
+# Checkout a new hotfix branch.
+#
+# Globals:
+#     None
+# Arguments:
+#     New feature branch name
+# Returns:
+#     None
+#######################################
+gitish::branch_new_hotfix() {
+    if [ "$1" = "" ]
+        then
+            echo "gitish::branch_new_hotfix: Please provide a hotfix branch name"
+            return
+    fi
+
+    git checkout -b hotfix/$1
+}
