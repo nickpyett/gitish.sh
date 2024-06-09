@@ -11,3 +11,28 @@ Clone the repo and add support for the gitish.sh commands and aliases to your te
 
     # git clone https://github.com/nickpyett/gitish.sh.git
     # echo -en "\n# gitish\nsource $(pwd)/gitish.sh/gitish.sh\nsource $(pwd)/gitish.sh/bash-aliases.sh\n" >> ~/.bashrc
+
+## Alliases and Commands
+
+# adda
+
+Equivalent of `git add -A`.
+
+Add all files in the working tree to the index.
+
+# addn
+
+Usage: addn <n>
+
+Equivalent of `git add filename-of-updated-file.example`.
+
+Adds a file to the index by number from `stsn`.
+
+## Arguments
+
+### n
+
+The number of the file that has differences to git head as shown in the `stsn` command.
+
+
+
