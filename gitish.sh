@@ -28,7 +28,7 @@ gitishTextWeightNormal="$(tput sgr0)"
 gitish::status_n() {
     echo -e "## ${gitishTextGreen}$(gitish::branch_name)${gitishTextNormal}"
 
-    IFS=$'\r\n' GLOBIGNORE='*' command eval 'gitStatusFiles=($(git status -s))'
+    IFS=$'\r\n' GLOBIGNORE='*' gitStatusFiles=($(git status -s))
 
     if [ "${gitStatusFiles}" = "" ]
         then
@@ -93,7 +93,7 @@ gitish::add_n() {
             return
     fi
 
-    IFS=$'\r\n' GLOBIGNORE='*' command eval 'gitStatusFiles=($(git status -s))'
+    IFS=$'\r\n' GLOBIGNORE='*' gitStatusFiles=($(git status -s))
 
     for arg;
     do
@@ -153,7 +153,7 @@ gitish::unstage_n() {
             return
     fi
 
-    IFS=$'\r\n' GLOBIGNORE='*' command eval 'gitStatusFiles=($(git status -s))'
+    IFS=$'\r\n' GLOBIGNORE='*' gitStatusFiles=($(git status -s))
 
     for arg;
     do
