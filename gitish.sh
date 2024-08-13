@@ -230,7 +230,7 @@ gitish::checkout_n() {
             return
     fi
 
-    branchNumber=$(($1));
+    branchNumber=$(($1 - 1));
     branchName=${gitBranches[${branchNumber}]:2}
 
     if [ -z "${branchName}" ]
