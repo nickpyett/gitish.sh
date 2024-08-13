@@ -89,7 +89,7 @@ gitish::set_upstream() {
 gitish::add_n() {
     if [ $# -eq 0 ]
         then
-            echo 'gitish::add_n: Please pass the file path number(s)'
+            echo "gitish::add_n: Please pass the file path ${gitishTextRed}number(s)"
             return
     fi
 
@@ -128,7 +128,7 @@ gitish::add_n() {
 gitish::commit_n() {
     if [ $# -eq 0 ]
         then
-            echo 'gitish::commit_n: Please pass the file path number(s)'
+            echo "gitish::commit_n: Please pass the file path ${gitishTextRed}number(s)"
             return
     fi
 
@@ -149,7 +149,7 @@ gitish::commit_n() {
 gitish::unstage_n() {
     if [ $# -eq 0 ]
         then
-            echo 'gitish::unstage_n: Please pass the file path number(s)'
+            echo "gitish::unstage_n: Please pass the file path ${gitishTextRed}number(s)"
             return
     fi
 
@@ -218,7 +218,7 @@ gitish::branch_n() {
 gitish::checkout_n() {
     if [ $# -eq 0 ]
         then
-            echo "gitish::checkout_n: Please pass the ${gitishTextRed}branch number"
+            echo "gitish::checkout_n: Please pass the branch ${gitishTextRed}number"
             return
     fi
 
@@ -291,7 +291,7 @@ gitish::branch_new() {
 gitish::branch_new_feature() {
     if [ "$1" = "" ]
         then
-            echo "gitish::branch_new_feature: Please provide a feature branch name"
+            echo "gitish::branch_new_feature: Please provide a ${gitishTextRed}feature branch name"
             return
     fi
 
@@ -311,7 +311,7 @@ gitish::branch_new_feature() {
 gitish::branch_new_hotfix() {
     if [ "$1" = "" ]
         then
-            echo "gitish::branch_new_hotfix: Please provide a hotfix branch name"
+            echo "gitish::branch_new_hotfix: Please provide a ${gitishTextRed}hotfix branch name"
             return
     fi
 
