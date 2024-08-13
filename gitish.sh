@@ -87,7 +87,7 @@ gitish::set_upstream() {
 #     None
 #######################################
 gitish::add_n() {
-    if [ "$#" == "0" ]
+    if [ $# -eq 0 ]
         then
             echo 'gitish::add_n: Please pass the file path number(s)'
             return
@@ -126,7 +126,7 @@ gitish::add_n() {
 #     None
 #######################################
 gitish::commit_n() {
-    if [ "$#" == "0" ]
+    if [ $# -eq 0 ]
         then
             echo 'gitish::commit_n: Please pass the file path number(s)'
             return
@@ -147,7 +147,7 @@ gitish::commit_n() {
 #     None
 #######################################
 gitish::unstage_n() {
-    if [ "$#" == "0" ]
+    if [ $# -eq 0 ]
         then
             echo 'gitish::unstage_n: Please pass the file path number(s)'
             return
