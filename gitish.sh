@@ -56,7 +56,7 @@ gitish::status_n() {
 #     None
 #######################################
 gitish::branch_name() {
-    git rev-parse --abbrev-ref HEAD;
+    git branch --show-current;
 }
 
 #######################################
