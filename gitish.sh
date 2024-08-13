@@ -71,7 +71,7 @@ gitish::branch_name() {
 #     None
 #######################################
 gitish::set_upstream() {
-    echo "Running ${gitishTextWeightBold}git push --set-upstream origin $(gitish::branch_name)${gitishTextWeightNormal}..."
+    echo -e "Running ${gitishTextWeightBold}git push --set-upstream origin $(gitish::branch_name)${gitishTextWeightNormal}..."
     git push --set-upstream origin $(gitish::branch_name)
 }
 
@@ -89,7 +89,7 @@ gitish::set_upstream() {
 gitish::add_n() {
     if [ $# -eq 0 ]
         then
-            echo "gitish::add_n: Please pass the file path ${gitishTextRed}number(s)"
+            echo -e "gitish::add_n: Please pass the file path ${gitishTextRed}number(s)"
             return
     fi
 
@@ -102,13 +102,13 @@ gitish::add_n() {
 
         if [ "${fileStatus}" = "" ]
             then
-                echo "gitish::add_n: File path not found with number ${arg}"
+                echo -e "gitish::add_n: File path not found with number ${gitishTextRed}${arg}"
                 continue
         fi
 
         filePath=${fileStatus:3}
 
-        echo "Adding file ${gitishTextWeightBold}${filePath}${gitishTextWeightNormal} to index"
+        echo -e "Adding file ${gitishTextWeightBold}${filePath}${gitishTextWeightNormal} to index"
 
         git add ${filePath}
     done
@@ -128,7 +128,7 @@ gitish::add_n() {
 gitish::commit_n() {
     if [ $# -eq 0 ]
         then
-            echo "gitish::commit_n: Please pass the file path ${gitishTextRed}number(s)"
+            echo -e "gitish::commit_n: Please pass the file path ${gitishTextRed}number(s)"
             return
     fi
 
@@ -149,7 +149,7 @@ gitish::commit_n() {
 gitish::unstage_n() {
     if [ $# -eq 0 ]
         then
-            echo "gitish::unstage_n: Please pass the file path ${gitishTextRed}number(s)"
+            echo -e "gitish::unstage_n: Please pass the file path ${gitishTextRed}number(s)"
             return
     fi
 
@@ -162,13 +162,13 @@ gitish::unstage_n() {
 
         if [ "${fileStatus}" = "" ]
             then
-                echo "gitish::unstage_n: File path not found with number ${arg}"
+                echo -e "gitish::unstage_n: File path not found with number ${gitishTextRed}${arg}"
                 return
         fi
 
         filePath=${fileStatus:3}
 
-        echo "Unstaging file ${gitishTextWeightBold}${filePath}${gitishTextWeightNormal} from index"
+        echo -e "Unstaging file ${gitishTextWeightBold}${filePath}${gitishTextWeightNormal} from index"
 
         git reset HEAD ${filePath}
     done
@@ -191,7 +191,7 @@ gitish::branch_n() {
 
     if [ "${gitBranches[1]}" = "" ]
         then
-            echo "gitish::branch_n: Repository only contains a ${gitishTextRed}single${gitishTextNormal} branch"
+            echo -e "gitish::branch_n: Repository only contains a ${gitishTextRed}single${gitishTextNormal} branch"
             return
     fi
 
@@ -218,7 +218,7 @@ gitish::branch_n() {
 gitish::checkout_n() {
     if [ $# -eq 0 ]
         then
-            echo "gitish::checkout_n: Please pass the branch ${gitishTextRed}number"
+            echo -e "gitish::checkout_n: Please pass the branch ${gitishTextRed}number"
             return
     fi
 
@@ -235,11 +235,11 @@ gitish::checkout_n() {
 
     if [ -z "${branchName}" ]
         then
-            echo "gitish::checkout_n: Branch not found with number ${gitishTextRed}${1}"
+            echo -e "gitish::checkout_n: Branch not found with number ${gitishTextRed}${1}"
             return
     fi
 
-    echo "Checking out branch ${gitishTextWeightBold}\"${branchName}\""
+    echo -e "Checking out branch ${gitishTextWeightBold}\"${branchName}\""
 
     git checkout ${branchName}
 }
@@ -271,7 +271,7 @@ gitish::add_a() {
 gitish::branch_new() {
     if [ "$1" = "" ]
         then
-            echo "gitish::branch_new: Please provide a ${gitishTextRed}branch name"
+            echo -e "gitish::branch_new: Please provide a ${gitishTextRed}branch name"
             return
     fi
 
@@ -291,7 +291,7 @@ gitish::branch_new() {
 gitish::branch_new_feature() {
     if [ "$1" = "" ]
         then
-            echo "gitish::branch_new_feature: Please provide a ${gitishTextRed}feature branch name"
+            echo -e "gitish::branch_new_feature: Please provide a ${gitishTextRed}feature branch name"
             return
     fi
 
@@ -311,7 +311,7 @@ gitish::branch_new_feature() {
 gitish::branch_new_hotfix() {
     if [ "$1" = "" ]
         then
-            echo "gitish::branch_new_hotfix: Please provide a ${gitishTextRed}hotfix branch name"
+            echo -e "gitish::branch_new_hotfix: Please provide a ${gitishTextRed}hotfix branch name"
             return
     fi
 
