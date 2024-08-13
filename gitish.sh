@@ -199,6 +199,12 @@ gitish::add_a() {
 #     None
 #######################################
 gitish::branch_new() {
+    if [ "$1" = "" ]
+        then
+            echo "gitish::branch_new: Please provide a ${gitishTextRed}branch name"
+            return
+    fi
+
     git checkout -b $1
 }
 
