@@ -175,6 +175,76 @@ gitish::unstage_n() {
 }
 
 #######################################
+# Show a list of numbered branches.
+#
+# Globals:
+#     None
+# Arguments:
+#     None
+# Returns:
+#     None
+#######################################
+gitish::branch_n() {
+    echo -e "## ${gitishTextGreen}$(gitish::branch_name)${gitishTextNormal}"
+
+    IFS=$'\r\n' GLOBIGNORE='*' gitBranches=($(git branch))
+
+    if [ "${gitBranches[1]}" = "" ]
+        then
+            echo "gitish::branch_n: Repository only contains a ${gitishTextRed}single${gitishTextNormal} branch"
+            return
+    fi
+
+    count=1
+
+    for line in "${gitBranches[@]}"
+    do
+        echo -e "${line:0:1}${gitishTextNormal} [${count}] ${line:2}"
+        ((count++))
+    done
+}
+
+#######################################
+# Checkout a branch based on the number
+# from branch_n().
+#
+# Globals:
+#     None
+# Arguments:
+#     Branch number from branch_n()
+# Returns:
+#     None
+#######################################
+gitish::checkout_n() {
+    if [ $# -eq 0 ]
+        then
+            echo "gitish::checkout_n: Please pass the ${gitishTextRed}branch number"
+            return
+    fi
+
+    IFS=$'\r\n' GLOBIGNORE='*' gitBranches=($(git branch))
+
+    if [ "${gitBranches[1]}" = "" ]
+        then
+            echo "Repository only contains a single branch"
+            return
+    fi
+
+    branchNumber=$(($1));
+    branchName=${gitBranches[${branchNumber}]:2}
+
+    if [ -z "${branchName}" ]
+        then
+            echo "gitish::checkout_n: Branch not found with number ${gitishTextRed}${1}"
+            return
+    fi
+
+    echo "Checking out branch ${gitishTextWeightBold}\"${branchName}\""
+
+    git checkout ${branchName}
+}
+
+#######################################
 # Add all the files to the index.
 #
 # Globals:
