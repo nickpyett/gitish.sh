@@ -97,8 +97,8 @@ gitish::add_n() {
 
     for arg;
     do
-        fileNumber=$(($arg - 1));
-        fileStatus=${gitStatusFiles[${fileNumber}]}
+        fileNumber=$((${arg} - 1));
+        fileStatus=${gitStatusFiles[@]:${fileNumber}:1}
 
         if [ "${fileStatus}" = "" ]
             then
@@ -157,8 +157,8 @@ gitish::unstage_n() {
 
     for arg;
     do
-        fileNumber=$(($arg - 1));
-        fileStatus=${gitStatusFiles[${fileNumber}]}
+        fileNumber=$((${arg} - 1));
+        fileStatus=${gitStatusFiles[@]:${fileNumber}:1}
 
         if [ "${fileStatus}" = "" ]
             then
@@ -222,7 +222,7 @@ gitish::checkout_n() {
             return
     fi
 
-    IFS=$'\r\n' GLOBIGNORE='*' gitBranches=($(git branch))
+    IFS=$'\n' GLOBIGNORE='*' gitBranches=($(git branch --format "%(refname:short)"))
 
     if [ "${gitBranches[1]}" = "" ]
         then
@@ -230,8 +230,8 @@ gitish::checkout_n() {
             return
     fi
 
-    branchNumber=$(($1 - 1));
-    branchName=${gitBranches[${branchNumber}]:2}
+    branchNumber=$((${1} - 1))
+    branchName=${gitBranches[@]:${branchNumber}:1}
 
     if [ -z "${branchName}" ]
         then
