@@ -14,13 +14,13 @@ Clone the repo and add support for the gitish.sh commands and aliases to your te
 
 ## Alliases and Commands
 
-# adda
+### adda
 
 Equivalent of `git add -A`.
 
 Add all files in the working tree to the index.
 
-# addn
+### addn
 
 Usage: addn <n>
 
@@ -28,11 +28,8 @@ Equivalent of `git add filename-of-updated-file.example`.
 
 Adds a file to the index by number from `stsn`.
 
-## Arguments
+#### Arguments
 
-### n
+##### n
 
 The number of the file that has differences to git head as shown in the `stsn` command.
-
-
-
